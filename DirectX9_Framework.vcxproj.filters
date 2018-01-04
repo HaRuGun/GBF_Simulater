@@ -49,6 +49,9 @@
     <Filter Include="MainGame\WinMain">
       <UniqueIdentifier>{ece9376a-a55c-4299-ab41-319a87d284ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Unit">
+      <UniqueIdentifier>{6f9de46a-72eb-42c1-b832-6b3fe537d14b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -99,6 +102,9 @@
     <ClInclude Include="WinMain.h">
       <Filter>MainGame\WinMain</Filter>
     </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>MainGame\Unit</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageManager.cpp">
@@ -136,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="WinMain.cpp">
       <Filter>MainGame\WinMain</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>MainGame\Unit</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

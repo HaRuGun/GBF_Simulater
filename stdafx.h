@@ -48,6 +48,7 @@
 #include "MainProc.h"
 #include "WinMain.h"
 
+#include "Unit.h"
 #include "SMain.h"
 
 extern HWND hWnd;
