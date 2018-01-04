@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{4ca3d992-96ba-44a2-8e6e-70cab3e4b24c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manager">
+      <UniqueIdentifier>{b3e4de9c-03e2-4f1a-b7a9-937ba31cc498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manager\ImageManager">
+      <UniqueIdentifier>{ac1fd247-0c9d-4680-a324-2cff83441fe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manager\InputManager">
+      <UniqueIdentifier>{d24ed8f4-6de7-41eb-9624-4ee1131758e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manager\SceneManager">
+      <UniqueIdentifier>{01e5f8e6-57de-4ea8-a410-ac67ebcaf925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manager\SoundManager">
+      <UniqueIdentifier>{52b7f7a9-f8c0-4ee9-91b9-504b372ba39e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manager\ObjectManager">
+      <UniqueIdentifier>{83313a69-eacf-467a-8ce7-aae9660e8632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manager\TextManager">
+      <UniqueIdentifier>{61f09f78-edb1-4b54-bb71-dcd621dd1a18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Object">
+      <UniqueIdentifier>{a934ef45-ba5f-4e25-aa6b-2f358c89b430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Scene">
+      <UniqueIdentifier>{b5766a0e-9670-4489-a706-a0c348e5b1ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame">
+      <UniqueIdentifier>{129fdf56-4f55-4a93-a21d-dc60d2506508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\MainProc">
+      <UniqueIdentifier>{ce2a6298-33ea-4c2e-a6e2-b106b382907c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{03e8e6e1-476b-4c27-a5db-364f777ead1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Scene">
+      <UniqueIdentifier>{00edf7ea-35a9-4a24-9280-a01cf88734ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Scene\01.Main">
+      <UniqueIdentifier>{81866525-4137-4f05-8640-6982f3cea758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\WinMain">
+      <UniqueIdentifier>{ece9376a-a55c-4299-ab41-319a87d284ab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImageManager.h">
+      <Filter>Framework\Manager\ImageManager</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Framework\Manager\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Framework\Manager\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Framework\Manager\SoundManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Framework\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TextManager.h">
+      <Filter>Framework\Manager\TextManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Framework\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Framework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MainProc.h">
+      <Filter>MainGame\MainProc</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleFunction.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="SMain.h">
+      <Filter>MainGame\Scene\01.Main</Filter>
+    </ClInclude>
+    <ClInclude Include="WinMain.h">
+      <Filter>MainGame\WinMain</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ImageManager.cpp">
+      <Filter>Framework\Manager\ImageManager</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Framework\Manager\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Framework\Manager\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Framework\Manager\SoundManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Framework\Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TextManager.cpp">
+      <Filter>Framework\Manager\TextManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Framework\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Framework\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MainProc.cpp">
+      <Filter>MainGame\MainProc</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="SMain.cpp">
+      <Filter>MainGame\Scene\01.Main</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>MainGame\WinMain</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
