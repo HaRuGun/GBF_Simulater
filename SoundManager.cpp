@@ -31,6 +31,14 @@ void SoundManager::Update()
 
 void SoundManager::Release()
 {
+	map<string, SoundData*>::iterator iter;
+	for (iter = mapSound.begin(); iter != mapSound.end(); ++iter)
+	{
+		iter->second->Sound->release();
+		SAFE_DELETE(iter->second);
+	}
+	mapSound.clear();
+
 	System->release();
 	System->close();
 }
@@ -39,40 +47,53 @@ void SoundManager::Release()
 // Custom
 
 
-void SoundManager::LoadSound(SoundData &soundData, LPCSTR fileName, SOUNDTYPE type)
+void SoundManager::LoadSound(string key, LPCSTR fileName, SOUNDTYPE type)
 {
-	soundData.type = type;
+	SoundData* dest;
+	dest = new SoundData;
+	dest->type = type;
 
 	switch (type)
 	{
 	case BGM:
-		System->createStream(fileName, FMOD_LOOP_NORMAL, NULL, &soundData.Sound);
+		System->createStream(fileName, FMOD_LOOP_NORMAL, NULL, &dest->Sound);
+		mapSound.insert(make_pair(key, dest));
 		return;
 
 	case SE:
-		System->createSound(fileName, FMOD_DEFAULT, NULL, &soundData.Sound);
+		System->createSound(fileName, FMOD_DEFAULT, NULL, &dest->Sound);
+		mapSound.insert(make_pair(key, dest));
 		return;
 	}
 }
 
 
-void SoundManager::PlaySound(SoundData &soundData)
+void SoundManager::PlaySound(string key)
 {
+	SoundData* dest = mapSound.find(key)->second;
+	if (dest == NULL)
+		return;
+
 	System->update();
-	System->playSound(FMOD_CHANNEL_FREE, soundData.Sound, false, &soundData.Channel);
+	System->playSound(FMOD_CHANNEL_FREE, dest->Sound, false, &dest->Channel);
 }
 
 
-void SoundManager::StopSound(SoundData &soundData)
+void SoundManager::StopSound(string key)
 {
-	if (!soundData.Channel) return;
+	SoundData* dest = mapSound.find(key)->second;
+	if (dest == NULL)
+		return;
+
+	if (!dest->Channel)
+		return;
 
 	bool bIsPlaying;
-	soundData.Channel->isPlaying(&bIsPlaying);
+	dest->Channel->isPlaying(&bIsPlaying);
 
 	if (bIsPlaying)
 	{
-		soundData.Channel->stop();
-		soundData.Channel = nullptr;
+		dest->Channel->stop();
+		dest->Channel = nullptr;
 	}
 }
