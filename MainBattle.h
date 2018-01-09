@@ -6,7 +6,6 @@ enum BATTLE_PHASE
 	READY,
 	START_PHASE,
 	ACTION_PHASE,
-	BEFORE_ATTACK_PHASE,
 	ATTACK_PHASE,
 	ENEMY_PHASE,
 	END_PHASE,
@@ -23,6 +22,14 @@ public:
 	void Update(double deltaTime);
 	void Render();
 	void Release();
+
+	void PhaseReady();
+	void PhaseStart();
+	void PhaseAction();
+	void PhaseAttack();
+	void PhaseEnemy();
+	void PhaseEnd();
+	void PhaseFinish();
 
 	MainBattle() {}
 	virtual ~MainBattle() {}
