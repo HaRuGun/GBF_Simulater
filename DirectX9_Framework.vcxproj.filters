@@ -52,6 +52,9 @@
     <Filter Include="MainGame\Unit">
       <UniqueIdentifier>{6f9de46a-72eb-42c1-b832-6b3fe537d14b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Unit\Monster">
+      <UniqueIdentifier>{d0c87864-02a2-4bfe-9bbf-8b09536c10ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -105,6 +108,9 @@
     <ClInclude Include="Unit.h">
       <Filter>MainGame\Unit</Filter>
     </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>MainGame\Unit\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageManager.cpp">
@@ -145,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>MainGame\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>MainGame\Unit\Monster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

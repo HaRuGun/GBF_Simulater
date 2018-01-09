@@ -152,6 +152,7 @@
     <ClInclude Include="ImageManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainProc.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Scene.h" />
@@ -170,6 +171,7 @@
     <ClCompile Include="ImageManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="MainProc.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Scene.cpp" />
