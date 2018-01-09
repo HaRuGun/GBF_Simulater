@@ -155,7 +155,6 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainBattle.h" />
     <ClInclude Include="MainProc.h" />
-    <ClInclude Include="Monster.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Scene.h" />
@@ -178,7 +177,6 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="MainBattle.cpp" />
     <ClCompile Include="MainProc.cpp" />
-    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Scene.cpp" />
