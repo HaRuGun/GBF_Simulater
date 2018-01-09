@@ -25,14 +25,16 @@ class SoundManager : public Singleton<SoundManager>
 private:
 	FMOD::System* System;
 
+	map<string, SoundData*> mapSound;
+
 public:
 	void Init();
 	void Update();
 	void Release();
 
-	void LoadSound(SoundData &soundData, LPCSTR fileName, SOUNDTYPE type);
-	void PlaySound(SoundData &soundData);
-	void StopSound(SoundData &soundData);
+	void LoadSound(string key, LPCSTR fileName, SOUNDTYPE type);
+	void PlaySound(string key);
+	void StopSound(string key);
 
 	SoundManager();
 	virtual ~SoundManager();
