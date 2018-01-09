@@ -37,7 +37,7 @@ protected:
 
 public:
 	unitStatus* GetStat() { return &stat; }
-	void SetStat(unitStatus stat) { this->stat = stat; }
+	void SetStat(const unitStatus& stat) { this->stat = stat; }
 
 	Unit();
 	virtual ~Unit();
