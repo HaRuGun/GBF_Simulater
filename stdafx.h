@@ -16,9 +16,6 @@
 #include <timeapi.h>
 #include <map>
 #include <vector>
-#include <iostream>
-#include <fstream>
-#include <string>
 
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "msimg32.lib")
@@ -38,7 +35,6 @@
 // Custom
 #include "SimpleFunction.h"
 #include "ImageManager.h"
-#include "AtlasManager.h"
 #include "InputManager.h"
 #include "TextManager.h"
 #include "SoundManager.h"

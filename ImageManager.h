@@ -33,8 +33,8 @@ private:
 	LPD3DXSPRITE lpd3dSprite;
 	
 	map<string, texture*> mapTexture;
-	map<string, RECT*> mapAtlas;
 	
+
 	int Init();
 	int Release();
 
@@ -46,10 +46,8 @@ public:
 	void ResetDevice();
 
 	void AddImage(string key, LPCSTR lpPath);
-	void AddAtlas(string key, RECT rc);
 	void DrawImage(string key, matrix mat, int alpha = 255.0f);
 	void DrawFrameImage(string key, frameData frame, matrix mat, int alpha = 255.0f);
-	void DrawAtlasImage(string key, matrix mat, int alpha = 255.0f);
 
 	ImageManager();
 	virtual ~ImageManager();

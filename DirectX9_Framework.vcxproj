@@ -150,7 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Abillity.h" />
-    <ClInclude Include="AtlasManager.h" />
     <ClInclude Include="Djeeta.h" />
     <ClInclude Include="ImageManager.h" />
     <ClInclude Include="InputManager.h" />
@@ -173,7 +172,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Abillity.cpp" />
-    <ClCompile Include="AtlasManager.cpp" />
     <ClCompile Include="Djeeta.cpp" />
     <ClCompile Include="ImageManager.cpp" />
     <ClCompile Include="InputManager.cpp" />

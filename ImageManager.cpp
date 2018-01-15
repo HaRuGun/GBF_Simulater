@@ -75,12 +75,6 @@ void ImageManager::AddImage(string key, LPCSTR lpPath)
 }
 
 
-void ImageManager::AddAtlas(string key, RECT rc)
-{
-	mapAtlas.insert(make_pair(key, &rc));
-}
-
-
 void ImageManager::DrawImage(string key, matrix mat, int alpha)
 {
 	texture* tex = mapTexture.find(key)->second;
@@ -114,28 +108,6 @@ void ImageManager::DrawFrameImage(string key, frameData frame, matrix mat, int a
 
 		D3DXMATRIX matTrans;
 		D3DXVECTOR3 Center = { width / frame.wCount / 2, height / frame.hCount / 2, 0.0f };
-
-		D3DXMatrixIdentity(&matTrans);
-		D3DXMatrixAffineTransformation2D(&matTrans, 1.0f, nullptr, D3DXToRadian(mat.direction), &D3DXVECTOR2(mat.x, mat.y));
-		lpd3dSprite->SetTransform(&matTrans);
-
-		lpd3dSprite->Draw(tex->lpd3dTex, &image, &Center, nullptr, D3DCOLOR_RGBA(0xFF, 0xFF, 0xFF, alpha));
-	}
-}
-
-
-void ImageManager::DrawAtlasImage(string key, matrix mat, int alpha)
-{
-	texture* tex = mapTexture.find(key)->second;
-	if (tex != NULL)
-	{
-		RECT image = *mapAtlas.find(key)->second;
-
-		float width = image.right - image.left;
-		float height = image.bottom - image.top;
-
-		D3DXMATRIX matTrans;
-		D3DXVECTOR3 Center = { width / 2, height / 2, 0.0f };
 
 		D3DXMatrixIdentity(&matTrans);
 		D3DXMatrixAffineTransformation2D(&matTrans, 1.0f, nullptr, D3DXToRadian(mat.direction), &D3DXVECTOR2(mat.x, mat.y));
