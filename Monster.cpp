@@ -57,7 +57,7 @@ void Monster::AttackPattern(Unit *unit)
 
 void Monster::NomalAttack(Unit * unit)
 {
-	unitStatus 
+	unitStatus destStatus;
 	(unit, stat.fAtk - stat.fAtk * ((unit->GetStat()->fDef / 3) / 100));
 }
 

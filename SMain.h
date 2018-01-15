@@ -5,6 +5,7 @@ class SMain : public Scene
 {
 protected:
 	matrix mat;
+	matrix pos;
 
 public:
 

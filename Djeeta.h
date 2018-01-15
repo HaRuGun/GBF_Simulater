@@ -1,5 +1,6 @@
 #pragma once
 #include "UCharacter.h"
+#include "Abillity.h"
 
 class Abillity;
 

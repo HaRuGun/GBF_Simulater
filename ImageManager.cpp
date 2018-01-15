@@ -77,7 +77,7 @@ void ImageManager::AddImage(string key, LPCSTR lpPath)
 
 void ImageManager::AddAtlas(string key, RECT rc)
 {
-	mapAtlas.insert(make_pair(key, &rc));
+	mapAtlas.insert(make_pair(key, rc));
 }
 
 
@@ -124,12 +124,12 @@ void ImageManager::DrawFrameImage(string key, frameData frame, matrix mat, int a
 }
 
 
-void ImageManager::DrawAtlasImage(string key, matrix mat, int alpha)
+void ImageManager::DrawAtlasImage(string AtlasName, string key, matrix mat, int alpha)
 {
-	texture* tex = mapTexture.find(key)->second;
+	texture* tex = mapTexture.find(AtlasName)->second;
 	if (tex != NULL)
 	{
-		RECT image = *mapAtlas.find(key)->second;
+		RECT image = mapAtlas.find(key)->second;
 
 		float width = image.right - image.left;
 		float height = image.bottom - image.top;

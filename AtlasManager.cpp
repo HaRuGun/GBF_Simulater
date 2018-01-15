@@ -2,7 +2,7 @@
 #include "AtlasManager.h"
 
 
-map<string, string> AtlasManager::SetAtlas(string AtlasName, string txtLocate, string pngLocate)
+void AtlasManager::SetAtlas(string AtlasName, string txtLocate, string pngLocate)
 {
 	ifstream input(txtLocate);
 	if (input.fail())
@@ -11,10 +11,9 @@ map<string, string> AtlasManager::SetAtlas(string AtlasName, string txtLocate, s
 	}
 
 	string data;
-	map<string, string> strmap;
 
-	string keyFirst;
-	string keySecond;
+	string keyName;
+	string keyParts;
 	RECT rc;
 
 	while (!input.eof())
@@ -36,8 +35,8 @@ map<string, string> AtlasManager::SetAtlas(string AtlasName, string txtLocate, s
 
 				if (wordCount == 0)
 				{
-					keyFirst = subStr;
-					keySecond = AtlasName + keyFirst;
+					keyParts = subStr;
+					keyName = AtlasName + keyParts;
 
 					wordCount = 1;
 				}
@@ -66,13 +65,12 @@ map<string, string> AtlasManager::SetAtlas(string AtlasName, string txtLocate, s
 			}
 		}
 
-		strmap.insert(make_pair(keyFirst, keySecond));
-		IMAGEMANAGER->AddAtlas(keySecond, rc);	
+		IMAGEMANAGER->AddAtlas(keyName, rc);
 	}
-	IMAGEMANAGER->AddImage(keySecond, pngLocate.c_str());
+	IMAGEMANAGER->AddImage(AtlasName, pngLocate.c_str());
 
 	input.close();
-	return strmap;
+	return;
 }
 
 /* Data Example
