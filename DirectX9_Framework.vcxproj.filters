@@ -34,9 +34,6 @@
     <Filter Include="MainGame">
       <UniqueIdentifier>{129fdf56-4f55-4a93-a21d-dc60d2506508}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainGame\MainProc">
-      <UniqueIdentifier>{ce2a6298-33ea-4c2e-a6e2-b106b382907c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Window">
       <UniqueIdentifier>{03e8e6e1-476b-4c27-a5db-364f777ead1f}</UniqueIdentifier>
     </Filter>
@@ -51,6 +48,12 @@
     </Filter>
     <Filter Include="MainGame\Unit">
       <UniqueIdentifier>{6f9de46a-72eb-42c1-b832-6b3fe537d14b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\MainProc">
+      <UniqueIdentifier>{ce2a6298-33ea-4c2e-a6e2-b106b382907c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manager\AtlasManager">
+      <UniqueIdentifier>{edbc420f-e1c8-4563-bd13-28eec6de5488}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +108,13 @@
     <ClInclude Include="Unit.h">
       <Filter>MainGame\Unit</Filter>
     </ClInclude>
+    <ClInclude Include="Abillity.h" />
+    <ClInclude Include="Djeeta.h" />
+    <ClInclude Include="MainBattle.h" />
+    <ClInclude Include="UCharacter.h" />
+    <ClInclude Include="AtlasManager.h">
+      <Filter>Framework\Manager\AtlasManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageManager.cpp">
@@ -145,6 +155,13 @@
     </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>MainGame\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Abillity.cpp" />
+    <ClCompile Include="Djeeta.cpp" />
+    <ClCompile Include="MainBattle.cpp" />
+    <ClCompile Include="UCharacter.cpp" />
+    <ClCompile Include="AtlasManager.cpp">
+      <Filter>Framework\Manager\AtlasManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

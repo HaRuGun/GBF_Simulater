@@ -9,7 +9,6 @@ struct texture
 	D3DXIMAGE_INFO info;
 };
 
-
 struct matrix
 {
 public:
@@ -18,12 +17,25 @@ public:
 	float velocity, direction;
 };
 
-
 struct frameData
 {
 public:
 	int wCount, hCount;
 	int wIndex, hIndex;
+};
+
+
+// Atlas Animation
+struct animFrame
+{
+	float fTime;
+	vector<animKey> vectorKey;
+};
+
+struct animKey
+{
+	string sParts;
+	matrix mat;
 };
 
 
@@ -34,6 +46,7 @@ private:
 	
 	map<string, texture*> mapTexture;
 	map<string, RECT> mapAtlas;
+	map<string, vector<animFrame>> mapAnim;
 	
 	int Init();
 	int Release();
@@ -47,9 +60,12 @@ public:
 
 	void AddImage(string key, LPCSTR lpPath);
 	void AddAtlas(string key, RECT rc);
+	void AddAtlasAnimation(string key, vector<animFrame> animFrame);
+
 	void DrawImage(string key, matrix mat, int alpha = 255.0f);
 	void DrawFrameImage(string key, frameData frame, matrix mat, int alpha = 255.0f);
-	void DrawAtlasImage(string AtlasName, string key, matrix mat, int alpha = 255.0f);
+	void DrawAtlasImage(string atlasName, string key, matrix mat, int alpha = 255.0f);
+	void DrawAtlasAnimation(string atlasName, string animName, matrix mat, int alpha = 255.0f);
 
 	ImageManager();
 	virtual ~ImageManager();

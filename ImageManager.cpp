@@ -81,6 +81,12 @@ void ImageManager::AddAtlas(string key, RECT rc)
 }
 
 
+void ImageManager::AddAtlasAnimation(string key, vector<animFrame> animFrame)
+{
+	mapAnim.insert(make_pair(key, animFrame));
+}
+
+
 void ImageManager::DrawImage(string key, matrix mat, int alpha)
 {
 	texture* tex = mapTexture.find(key)->second;
@@ -124,9 +130,9 @@ void ImageManager::DrawFrameImage(string key, frameData frame, matrix mat, int a
 }
 
 
-void ImageManager::DrawAtlasImage(string AtlasName, string key, matrix mat, int alpha)
+void ImageManager::DrawAtlasImage(string atlasName, string key, matrix mat, int alpha)
 {
-	texture* tex = mapTexture.find(AtlasName)->second;
+	texture* tex = mapTexture.find(atlasName)->second;
 	if (tex != NULL)
 	{
 		RECT image = mapAtlas.find(key)->second;
@@ -143,4 +149,9 @@ void ImageManager::DrawAtlasImage(string AtlasName, string key, matrix mat, int 
 
 		lpd3dSprite->Draw(tex->lpd3dTex, &image, &Center, nullptr, D3DCOLOR_RGBA(0xFF, 0xFF, 0xFF, alpha));
 	}
+}
+
+
+void ImageManager::DrawAtlasAnimation(string atlasName, string animName, matrix mat, int alpha)
+{
 }

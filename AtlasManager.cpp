@@ -73,7 +73,32 @@ void AtlasManager::SetAtlas(string AtlasName, string txtLocate, string pngLocate
 	return;
 }
 
+void AtlasManager::SetAtlasAnimation(string AtlasName, string AnimName, string txtLocate)
+{
+	ifstream input(txtLocate);
+	if (input.fail())
+	{
+		// Crash:File Open Error
+	}
+
+	vector<animFrame> animFrame;
+
+	// Solving
+	
+	
+	IMAGEMANAGER->AddAtlasAnimation(AtlasName + AnimName, animFrame);
+	input.close();
+	return;
+}
+
 /* Data Example
+Atlas
 HEAD/0/0/20/20/
 BODY/20/0/40/20/
+...
+
+Anim
+0.1_HEAD/1/1/0/0/0/0_BODY/1/1/0/1/0/0/...
+0.2_HEAD/0.9/0.9/0/0/0/0_BODY/1/1/0/1/0/0/...
+...
 */
