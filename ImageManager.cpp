@@ -98,12 +98,17 @@ void ImageManager::DrawImage(string key, matrix mat, int alpha)
 	texture* tex = mapTexture.find(key)->second;
 	if (tex != NULL)
 	{
-		D3DXMATRIX matTrans;
 		D3DXVECTOR3 Center = { (float)tex->info.Width / 2, (float)tex->info.Height / 2, 0.0f };
 
-		D3DXMatrixIdentity(&matTrans);
-		D3DXMatrixAffineTransformation2D(&matTrans, 1.0f, nullptr, D3DXToRadian(mat.direction), &D3DXVECTOR2(mat.x, mat.y));
-		lpd3dSprite->SetTransform(&matTrans);
+		D3DXMATRIXA16 matS, matR, matT, matResult;
+
+		D3DXMatrixScaling(&matS, mat.width, mat.height, 1);
+		D3DXMatrixRotationZ(&matR, D3DXToRadian(mat.direction));
+		D3DXMatrixTranslation(&matT, mat.x, mat.y, 0);
+
+		matResult = matS * matR * matT;
+
+		lpd3dSprite->SetTransform(&matResult);
 
 		lpd3dSprite->Draw(tex->lpd3dTex, nullptr, &Center, nullptr, D3DCOLOR_RGBA(0xFF, 0xFF, 0xFF, alpha));
 	}
@@ -124,12 +129,17 @@ void ImageManager::DrawFrameImage(string key, frameData frame, matrix mat, int a
 		float bottom = height / frame.hCount * (frame.hIndex + 1);
 		RECT image = { left, top, right, bottom };
 
-		D3DXMATRIX matTrans;
 		D3DXVECTOR3 Center = { width / frame.wCount / 2, height / frame.hCount / 2, 0.0f };
+		
+		D3DXMATRIXA16 matS, matR, matT, matResult;
 
-		D3DXMatrixIdentity(&matTrans);
-		D3DXMatrixAffineTransformation2D(&matTrans, 1.0f, nullptr, D3DXToRadian(mat.direction), &D3DXVECTOR2(mat.x, mat.y));
-		lpd3dSprite->SetTransform(&matTrans);
+		D3DXMatrixScaling(&matS, mat.width, mat.height, 1);
+		D3DXMatrixRotationZ(&matR, D3DXToRadian(mat.direction));
+		D3DXMatrixTranslation(&matT, mat.x, mat.y, 0);
+		
+		matResult = matS * matR * matT;
+
+		lpd3dSprite->SetTransform(&matResult);
 
 		lpd3dSprite->Draw(tex->lpd3dTex, &image, &Center, nullptr, D3DCOLOR_RGBA(0xFF, 0xFF, 0xFF, alpha));
 	}

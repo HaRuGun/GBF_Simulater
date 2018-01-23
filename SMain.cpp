@@ -12,7 +12,7 @@ SMain::~SMain()
 void SMain::Init() 
 {
 	IMAGEMANAGER->AddImage("MAIN", "./Texture/sprites.jpg");
-	mat = { 0, 0, 0, 0, 0, 0 };
+	mat = { 1, 1, 500, 300, 0, 30 };
 	ATLASMANAGER->SetAtlas("JETA", "./txt/jeta.txt", "./Texture/jeta.png");
 	pos = { 1, 1, 350, 350, 0, 0 };
 }
