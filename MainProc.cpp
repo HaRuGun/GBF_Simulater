@@ -39,11 +39,11 @@ int MainProc::Update(double deltaTime)
 }
 
 
-int MainProc::Render()
+int MainProc::Render(double deltaTime)
 {
 	IMAGEMANAGER->Begin();
 
-	SCENEMANAGER->Render();
+	SCENEMANAGER->Render(deltaTime);
 
 	IMAGEMANAGER->End();
 	return 0;

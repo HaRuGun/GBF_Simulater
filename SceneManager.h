@@ -13,7 +13,7 @@ private:
 public:
 	void Init();
 	void Update(double deltaTime);
-	void Render();
+	void Render(double deltaTime);
 	void Release();
 	 
 	void ChageScene(Scene * pScene);

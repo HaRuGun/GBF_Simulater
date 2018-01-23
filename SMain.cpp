@@ -21,7 +21,7 @@ void SMain::Update(double deltaTime)
 {
 }
 
-void SMain::Render() 
+void SMain::Render(double deltaTime)
 {
 	IMAGEMANAGER->DrawImage("MAIN", mat);
 

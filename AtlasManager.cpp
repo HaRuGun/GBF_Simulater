@@ -2,7 +2,7 @@
 #include "AtlasManager.h"
 
 
-void AtlasManager::SetAtlas(string AtlasName, string txtLocate, string pngLocate)
+void AtlasManager::SetAtlas(string atlasName, string txtLocate, string pngLocate)
 {
 	ifstream input(txtLocate);
 	if (input.fail())
@@ -12,68 +12,30 @@ void AtlasManager::SetAtlas(string AtlasName, string txtLocate, string pngLocate
 
 	string data;
 
-	string keyName;
-	string keyParts;
-	RECT rc;
-
 	while (!input.eof())
 	{
+		string destName;
+		RECT destRc;
+
 		getline(input, data);
-		// Data Solving
 
-		string::iterator tempIter = data.begin();
-		int first, second;
-		int wordCount = 0;
+		destName = atlasName + StringToken(data, '/');
+		destRc.left		= stof(StringToken(data, ','));
+		destRc.top		= stof(StringToken(data, ','));
+		destRc.right	= stof(StringToken(data, ','));
+		destRc.bottom	= stof(StringToken(data, ','));
 
-		for (string::iterator iter = data.begin(); iter != data.end(); ++iter)
-		{
-			if (*iter == '/')
-			{
-				first = distance(data.begin(), tempIter);
-				second = distance(tempIter, iter);
-				string subStr = data.substr(first, second);
-
-				if (wordCount == 0)
-				{
-					keyParts = subStr;
-					keyName = AtlasName + keyParts;
-
-					wordCount = 1;
-				}
-				else if (wordCount == 1)
-				{
-					rc.left = stof(subStr);
-					wordCount = 2;
-				}
-				else if (wordCount == 2)
-				{
-					rc.top = stof(subStr);
-					wordCount = 3;
-				}
-				else if (wordCount == 3)
-				{
-					rc.right = stof(subStr);
-					wordCount = 4;
-				}
-				else if (wordCount == 4)
-				{
-					rc.bottom = stof(subStr);
-					wordCount = 0;
-				}
-
-				tempIter = iter + 1;
-			}
-		}
-
-		IMAGEMANAGER->AddAtlas(keyName, rc);
+		IMAGEMANAGER->AddAtlas(destName, destRc);
 	}
-	IMAGEMANAGER->AddImage(AtlasName, pngLocate.c_str());
+
+	IMAGEMANAGER->AddImage(atlasName, pngLocate.c_str());
 
 	input.close();
 	return;
 }
 
-void AtlasManager::SetAtlasAnimation(string AtlasName, string AnimName, string txtLocate)
+
+void AtlasManager::SetAtlasAnimation(string atlasName, string key, string txtLocate)
 {
 	ifstream input(txtLocate);
 	if (input.fail())
@@ -81,24 +43,47 @@ void AtlasManager::SetAtlasAnimation(string AtlasName, string AnimName, string t
 		// Crash:File Open Error
 	}
 
-	vector<animFrame> animFrame;
+	string data;
 
-	// Solving
-	
-	
-	IMAGEMANAGER->AddAtlasAnimation(AtlasName + AnimName, animFrame);
+	atlasAnimation destAnim;
+	destAnim.dCurrentTime = 0;
+	destAnim.frameCount = 0;
+
+	while (!input.eof())
+	{
+		getline(input, data);
+
+		animFrame destFrame;
+		destFrame.fTime = stof(StringToken(data, '_'));
+
+		while (data[0] == '@')
+		{
+			animKey destKey;
+			destKey.sParts = StringToken(data, '/');
+			destKey.mat.width = stof(StringToken(data, ','));
+			destKey.mat.height = stof(StringToken(data, ','));
+			destKey.mat.x = stof(StringToken(data, ','));
+			destKey.mat.y = stof(StringToken(data, ','));
+			destKey.mat.velocity = stof(StringToken(data, ','));
+			destKey.mat.direction = stof(StringToken(data, ','));
+
+			destFrame.vectorKey.push_back(destKey);
+		}
+
+		destAnim.vectorFrame.push_back(destFrame);
+	}
+
+	IMAGEMANAGER->AddAtlasAnimation(atlasName + key, destAnim);
+
 	input.close();
 	return;
 }
 
 /* Data Example
-Atlas
-HEAD/0/0/20/20/
-BODY/20/0/40/20/
-...
+HEAD/0,0,20,20,
+BODY/20,0,40,20,
 
 Anim
-0.1_HEAD/1/1/0/0/0/0_BODY/1/1/0/1/0/0/...
-0.2_HEAD/0.9/0.9/0/0/0/0_BODY/1/1/0/1/0/0/...
-...
+0.1_HEAD/1,1,0,0,0,0,BODY/1,1,0,1,0,0,@
+0.2_HEAD/0.9/0.9/0/0/0/0_BODY/1/1/0/1/0/0/...@
 */

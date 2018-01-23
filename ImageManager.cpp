@@ -59,6 +59,9 @@ void ImageManager::ResetDevice()
 }
 
 
+//
+
+
 void ImageManager::AddImage(string key, LPCSTR lpPath)
 {
 	LPDIRECT3DTEXTURE9 lpd3dTex;
@@ -81,10 +84,13 @@ void ImageManager::AddAtlas(string key, RECT rc)
 }
 
 
-void ImageManager::AddAtlasAnimation(string key, vector<animFrame> animFrame)
+void ImageManager::AddAtlasAnimation(string key, atlasAnimation anim)
 {
-	mapAnim.insert(make_pair(key, animFrame));
+	mapAnimation.insert(make_pair(key, anim));
 }
+
+
+//
 
 
 void ImageManager::DrawImage(string key, matrix mat, int alpha)
@@ -152,6 +158,34 @@ void ImageManager::DrawAtlasImage(string atlasName, string key, matrix mat, int 
 }
 
 
-void ImageManager::DrawAtlasAnimation(string atlasName, string animName, matrix mat, int alpha)
+//
+
+
+void ImageManager::PlayAtlasAnimation(string atlasName, string key, matrix mat, double deltaTime, int alpha)
 {
+	atlasAnimation destAnim = mapAnimation.find(atlasName + key)->second;
+	destAnim.dCurrentTime += deltaTime;
+
+	animFrame destFrame = destAnim.vectorFrame[destAnim.frameCount];
+
+	size_t j;
+	for (j = 0; j < destFrame.vectorKey.size(); j++)
+	{
+		animKey destKey = destFrame.vectorKey[j];
+		DrawAtlasImage(atlasName, destKey.sParts, destKey.mat, alpha);
+	}
+
+	if (destFrame.fTime >= destAnim.dCurrentTime)
+		destAnim.frameCount++;
+}
+
+
+void ImageManager::StopAtlasAnimation(string atlasName, string key)
+{
+	atlasAnimation destAnim = mapAnimation.find(atlasName + key)->second;
+	if (destAnim.dCurrentTime != 0 || destAnim.frameCount != 0)
+	{
+		destAnim.dCurrentTime = 0;
+		destAnim.frameCount = 0;
+	}
 }

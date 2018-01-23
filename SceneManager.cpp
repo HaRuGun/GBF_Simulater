@@ -32,9 +32,9 @@ void SceneManager::Update(double deltaTime)
 }
 
 
-void SceneManager::Render()
+void SceneManager::Render(double deltaTime)
 {
-	pCurrentScene->Render();
+	pCurrentScene->Render(deltaTime);
 }
 
 
