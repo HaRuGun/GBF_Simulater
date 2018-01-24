@@ -13,7 +13,7 @@ void SMain::Init()
 {
 	IMAGEMANAGER->AddImage("MAIN", "./Texture/sprites.jpg");
 	mat = { 0, 0, 0, 0, 0, 0 };
-	ATLASMANAGER->SetAtlas("JETA", "./txt/jeta.txt", "./Texture/jeta.png");
+	ATLASMANAGER->SetAtlas("JETA", "./txt/jeta.txt", "./Texture/jeta2.png");
 	pos = { 1, 1, 350, 350, 0, 0 };
 }
 
@@ -25,7 +25,7 @@ void SMain::Render()
 {
 	IMAGEMANAGER->DrawImage("MAIN", mat);
 
-	if(INPUTMANAGER->IsKeyDown(VK_SPACE))
+	if(INPUTMANAGER->IsKeyHold(VK_SPACE))
 		IMAGEMANAGER->DrawAtlasImage("JETA", "JETAHURT", pos);
 	else
 		IMAGEMANAGER->DrawAtlasImage("JETA", "JETAHEAD", pos);
