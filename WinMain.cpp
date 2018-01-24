@@ -118,7 +118,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 				
 				lpd3dDevice->Clear(0, NULL, D3DCLEAR_STENCIL | D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xff0000ff, 1.0f, 0);
 				lpd3dDevice->BeginScene();
-				main.Render();
+				main.Render(deltaTime);
 				lpd3dDevice->EndScene();
 
 				if (lpd3dDevice->Present(0, 0, 0, 0) == D3DERR_DEVICELOST)

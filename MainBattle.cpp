@@ -21,7 +21,7 @@ void MainBattle::Update(double deltaTime)
 	}
 }
 
-void MainBattle::Render()
+void MainBattle::Render(double deltaTime)
 {
 }
 

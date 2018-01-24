@@ -27,6 +27,27 @@ public:
 };
 
 
+// Atlas Animation
+struct animKey
+{
+	string sParts;
+	matrix mat;
+};
+
+struct animFrame
+{
+	float fTime;
+	vector<animKey> vectorKey;
+};
+
+struct atlasAnimation
+{
+	double dCurrentTime;
+	size_t frameCount;
+	vector<animFrame> vectorFrame;
+};
+
+
 class ImageManager : public Singleton<ImageManager>
 {
 private:
@@ -34,6 +55,7 @@ private:
 	
 	map<string, texture*> mapTexture;
 	map<string, RECT> mapAtlas;
+	map<string, atlasAnimation> mapAnimation;
 	
 	int Init();
 	int Release();
@@ -47,9 +69,14 @@ public:
 
 	void AddImage(string key, LPCSTR lpPath);
 	void AddAtlas(string key, RECT rc);
+	void AddAtlasAnimation(string key, atlasAnimation anim);
+
 	void DrawImage(string key, matrix mat, int alpha = 255.0f);
 	void DrawFrameImage(string key, frameData frame, matrix mat, int alpha = 255.0f);
-	void DrawAtlasImage(string AtlasName, string key, matrix mat, int alpha = 255.0f);
+	void DrawAtlasImage(string atlasName, string key, matrix mat, int alpha = 255.0f);
+	
+	void PlayAtlasAnimation(string atlasName, string key, matrix mat, double deltaTime, int alpha = 255.0f);
+	void StopAtlasAnimation(string atlasName, string key);
 
 	ImageManager();
 	virtual ~ImageManager();

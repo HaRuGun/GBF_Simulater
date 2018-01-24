@@ -59,6 +59,9 @@ void ImageManager::ResetDevice()
 }
 
 
+//
+
+
 void ImageManager::AddImage(string key, LPCSTR lpPath)
 {
 	LPDIRECT3DTEXTURE9 lpd3dTex;
@@ -81,17 +84,31 @@ void ImageManager::AddAtlas(string key, RECT rc)
 }
 
 
+void ImageManager::AddAtlasAnimation(string key, atlasAnimation anim)
+{
+	mapAnimation.insert(make_pair(key, anim));
+}
+
+
+//
+
+
 void ImageManager::DrawImage(string key, matrix mat, int alpha)
 {
 	texture* tex = mapTexture.find(key)->second;
 	if (tex != NULL)
 	{
-		D3DXMATRIX matTrans;
 		D3DXVECTOR3 Center = { (float)tex->info.Width / 2, (float)tex->info.Height / 2, 0.0f };
 
-		D3DXMatrixIdentity(&matTrans);
-		D3DXMatrixAffineTransformation2D(&matTrans, 1.0f, nullptr, D3DXToRadian(mat.direction), &D3DXVECTOR2(mat.x, mat.y));
-		lpd3dSprite->SetTransform(&matTrans);
+		D3DXMATRIXA16 matS, matR, matT, matResult;
+
+		D3DXMatrixScaling(&matS, mat.width, mat.height, 1);
+		D3DXMatrixRotationZ(&matR, D3DXToRadian(mat.direction));
+		D3DXMatrixTranslation(&matT, mat.x, mat.y, 0);
+
+		matResult = matS * matR * matT;
+
+		lpd3dSprite->SetTransform(&matResult);
 
 		lpd3dSprite->Draw(tex->lpd3dTex, nullptr, &Center, nullptr, D3DCOLOR_RGBA(0xFF, 0xFF, 0xFF, alpha));
 	}
@@ -112,21 +129,26 @@ void ImageManager::DrawFrameImage(string key, frameData frame, matrix mat, int a
 		float bottom = height / frame.hCount * (frame.hIndex + 1);
 		RECT image = { left, top, right, bottom };
 
-		D3DXMATRIX matTrans;
 		D3DXVECTOR3 Center = { width / frame.wCount / 2, height / frame.hCount / 2, 0.0f };
+		
+		D3DXMATRIXA16 matS, matR, matT, matResult;
 
-		D3DXMatrixIdentity(&matTrans);
-		D3DXMatrixAffineTransformation2D(&matTrans, 1.0f, nullptr, D3DXToRadian(mat.direction), &D3DXVECTOR2(mat.x, mat.y));
-		lpd3dSprite->SetTransform(&matTrans);
+		D3DXMatrixScaling(&matS, mat.width, mat.height, 1);
+		D3DXMatrixRotationZ(&matR, D3DXToRadian(mat.direction));
+		D3DXMatrixTranslation(&matT, mat.x, mat.y, 0);
+		
+		matResult = matS * matR * matT;
+
+		lpd3dSprite->SetTransform(&matResult);
 
 		lpd3dSprite->Draw(tex->lpd3dTex, &image, &Center, nullptr, D3DCOLOR_RGBA(0xFF, 0xFF, 0xFF, alpha));
 	}
 }
 
 
-void ImageManager::DrawAtlasImage(string AtlasName, string key, matrix mat, int alpha)
+void ImageManager::DrawAtlasImage(string atlasName, string key, matrix mat, int alpha)
 {
-	texture* tex = mapTexture.find(AtlasName)->second;
+	texture* tex = mapTexture.find(atlasName)->second;
 	if (tex != NULL)
 	{
 		RECT image = mapAtlas.find(key)->second;
@@ -142,5 +164,38 @@ void ImageManager::DrawAtlasImage(string AtlasName, string key, matrix mat, int 
 		lpd3dSprite->SetTransform(&matTrans);
 
 		lpd3dSprite->Draw(tex->lpd3dTex, &image, &Center, nullptr, D3DCOLOR_RGBA(0xFF, 0xFF, 0xFF, alpha));
+	}
+}
+
+
+//
+
+
+void ImageManager::PlayAtlasAnimation(string atlasName, string key, matrix mat, double deltaTime, int alpha)
+{
+	atlasAnimation destAnim = mapAnimation.find(atlasName + key)->second;
+	destAnim.dCurrentTime += deltaTime;
+
+	animFrame destFrame = destAnim.vectorFrame[destAnim.frameCount];
+
+	size_t j;
+	for (j = 0; j < destFrame.vectorKey.size(); j++)
+	{
+		animKey destKey = destFrame.vectorKey[j];
+		DrawAtlasImage(atlasName, destKey.sParts, destKey.mat, alpha);
+	}
+
+	if (destFrame.fTime >= destAnim.dCurrentTime)
+		destAnim.frameCount++;
+}
+
+
+void ImageManager::StopAtlasAnimation(string atlasName, string key)
+{
+	atlasAnimation destAnim = mapAnimation.find(atlasName + key)->second;
+	if (destAnim.dCurrentTime != 0 || destAnim.frameCount != 0)
+	{
+		destAnim.dCurrentTime = 0;
+		destAnim.frameCount = 0;
 	}
 }

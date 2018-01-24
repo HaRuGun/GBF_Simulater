@@ -22,7 +22,7 @@ void CDjeeta::Update(double deltaTime)
 {
 }
 
-void CDjeeta::Render()
+void CDjeeta::Render(double deltaTime)
 {
 }
 

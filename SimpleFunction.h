@@ -9,3 +9,6 @@ inline double radian(double degree)
 {
 	return degree * PI / 180;
 }
+
+using namespace std;
+string StringToken(string& data, const char token);

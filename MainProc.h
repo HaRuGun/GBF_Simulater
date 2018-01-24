@@ -17,7 +17,7 @@ private:
 public:
 	int Init();
 	int Update(double deltaTime);
-	int Render();
+	int Render(double deltaTime);
 	int Release();
 
 	void LostDevice();
