@@ -4,7 +4,9 @@
 
 void MainBattle::Init()
 {
-	phase = NONE;
+	phase = READY;
+	Boss = new MColossusNormal;
+	Boss->Init();
 }
 
 void MainBattle::Update(double deltaTime)
@@ -23,6 +25,7 @@ void MainBattle::Update(double deltaTime)
 
 void MainBattle::Render(double deltaTime)
 {
+	Boss->Render(deltaTime);
 }
 
 void MainBattle::Release()
@@ -35,7 +38,7 @@ void MainBattle::Release()
 
 void MainBattle::PhaseReady()
 {
-
+	Boss->IdleAnime();
 }
 
 void MainBattle::PhaseStart()

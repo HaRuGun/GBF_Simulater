@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "SMain.h"
+#include "MColossusNormal.h"
+#include "MainBattle.h"
+
 
 SMain::SMain()
 {
@@ -11,24 +14,18 @@ SMain::~SMain()
 
 void SMain::Init() 
 {
-	IMAGEMANAGER->AddImage("MAIN", "./Texture/sprites.jpg");
-	mat = { 1, 1, 500, 300, 0, 30 };
-	ATLASMANAGER->SetAtlas("JETA", "./txt/jeta.txt", "./Texture/jeta2.png");
-	pos = { 1, 1, 350, 350, 0, 0 };
+	mainBattle = new MainBattle;
+	mainBattle->Init();
 }
 
 void SMain::Update(double deltaTime)
 {
+	mainBattle->Update(deltaTime);
 }
 
 void SMain::Render(double deltaTime)
 {
-	IMAGEMANAGER->DrawImage("MAIN", mat);
-
-	if(INPUTMANAGER->IsKeyHold(VK_SPACE))
-		IMAGEMANAGER->DrawAtlasImage("JETA", "JETAHURT", pos);
-	else
-		IMAGEMANAGER->DrawAtlasImage("JETA", "JETAHEAD", pos);
+	mainBattle->Render(deltaTime);
 }
 
 void SMain::Release()

@@ -16,6 +16,7 @@ class MainBattle
 {
 protected:
 	BATTLE_PHASE phase;
+	UMonster *Boss;
 
 public:
 	void Init();

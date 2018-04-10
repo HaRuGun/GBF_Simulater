@@ -55,6 +55,12 @@
     <Filter Include="Framework\Manager\AtlasManager">
       <UniqueIdentifier>{edbc420f-e1c8-4563-bd13-28eec6de5488}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Unit\Monster">
+      <UniqueIdentifier>{2affddf5-7d5a-43ae-af77-493639c99b93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Unit\Character">
+      <UniqueIdentifier>{667e8197-40f2-4d6a-9d97-9c71f6990f1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -109,11 +115,23 @@
       <Filter>MainGame\Unit</Filter>
     </ClInclude>
     <ClInclude Include="Abillity.h" />
-    <ClInclude Include="Djeeta.h" />
-    <ClInclude Include="MainBattle.h" />
-    <ClInclude Include="UCharacter.h" />
     <ClInclude Include="AtlasManager.h">
       <Filter>Framework\Manager\AtlasManager</Filter>
+    </ClInclude>
+    <ClInclude Include="UCharacter.h">
+      <Filter>MainGame\Unit\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="UMonster.h">
+      <Filter>MainGame\Unit\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="MainBattle.h">
+      <Filter>MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Djeeta.h">
+      <Filter>MainGame\Unit\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="MColossusNormal.h">
+      <Filter>MainGame\Unit\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -157,11 +175,24 @@
       <Filter>MainGame\Unit</Filter>
     </ClCompile>
     <ClCompile Include="Abillity.cpp" />
-    <ClCompile Include="Djeeta.cpp" />
-    <ClCompile Include="MainBattle.cpp" />
-    <ClCompile Include="UCharacter.cpp" />
     <ClCompile Include="AtlasManager.cpp">
       <Filter>Framework\Manager\AtlasManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleFunction.cpp" />
+    <ClCompile Include="UCharacter.cpp">
+      <Filter>MainGame\Unit\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="UMonster.cpp">
+      <Filter>MainGame\Unit\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MainBattle.cpp">
+      <Filter>MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Djeeta.cpp">
+      <Filter>MainGame\Unit\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="MColossusNormal.cpp">
+      <Filter>MainGame\Unit\Monster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

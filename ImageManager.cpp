@@ -106,7 +106,7 @@ void ImageManager::DrawImage(string key, matrix mat, int alpha)
 		D3DXMatrixRotationZ(&matR, D3DXToRadian(mat.direction));
 		D3DXMatrixTranslation(&matT, mat.x, mat.y, 0);
 
-		matResult = matS * matR * matT;
+		matResult = matR * matT * matS;
 
 		lpd3dSprite->SetTransform(&matResult);
 
@@ -156,11 +156,11 @@ void ImageManager::DrawAtlasImage(string atlasName, string key, matrix mat, int 
 		float width = image.right - image.left;
 		float height = image.bottom - image.top;
 
-		D3DXMATRIX matTrans;
+		D3DXMATRIX matTrans, matS;
 		D3DXVECTOR3 Center = { width / 2, height / 2, 0.0f };
 
 		D3DXMatrixIdentity(&matTrans);
-		D3DXMatrixAffineTransformation2D(&matTrans, 1.0f, nullptr, D3DXToRadian(mat.direction), &D3DXVECTOR2(mat.x, mat.y));
+		D3DXMatrixAffineTransformation2D(&matTrans, mat.width, nullptr, D3DXToRadian(mat.direction), &D3DXVECTOR2(mat.x, mat.y));
 		lpd3dSprite->SetTransform(&matTrans);
 
 		lpd3dSprite->Draw(tex->lpd3dTex, &image, &Center, nullptr, D3DCOLOR_RGBA(0xFF, 0xFF, 0xFF, alpha));

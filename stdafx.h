@@ -53,6 +53,9 @@
 #include "WinMain.h"
 
 #include "Unit.h"
+#include "UMonster.h"
+#include "MColossusNormal.h"
+
 #include "SMain.h"
 
 extern HWND hWnd;

@@ -72,6 +72,19 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	d3d9 = NULL;
 
 	main.Init();
+#ifdef _DEBUG
+
+	AllocConsole();                 // Allocate console window
+
+	freopen("CONOUT$", "a", stderr); // Redirect stderr to console
+
+	freopen("CONOUT$", "a", stdout); // Redirect stdout also
+
+	freopen("CONIN$", "r", stdin);
+
+	SetConsoleTitleA("Test v.1.0");
+
+#endif
 	ShowWindow(hWnd, nCmdShow);
 
 	MSG msg;
@@ -162,6 +175,10 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 
 	case WM_LBUTTONUP:
 		INPUTMANAGER->SetMouseClick(false);
+		break;
+
+	case WM_KEYDOWN:
+		
 		break;
 
 	case WM_DESTROY:

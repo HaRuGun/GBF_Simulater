@@ -35,6 +35,10 @@ int MainProc::Update(double deltaTime)
 	{
 		ChangeWindow(WINDOWED);
 	}
+	if (INPUTMANAGER->IsKeyDown(VK_ESCAPE))
+	{
+		PostMessage(hWnd, WM_QUIT, NULL, NULL);
+	}
 	return 0;
 }
 

@@ -16,7 +16,17 @@ public:
 	float width, height;
 	float x, y;
 	float velocity, direction;
-};
+
+	matrix(float _x, float _y) { x = _x; y = _y; }
+	matrix(float _width, float _height, float _x, float _y, float _velocity, float _direction)
+	{
+		width = _width; height = _height;
+		x = _x; y = _y;
+		velocity = _velocity; direction = _direction;
+	}
+	matrix() {}
+	~matrix() {}
+};	
 
 
 struct frameData
