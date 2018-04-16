@@ -1,6 +1,13 @@
 #pragma once
 
 
+enum MONSTER_ANIME_STATE
+{
+	M_IDLE,
+	M_ATTACK,
+	M_HURT
+};
+
 class Abillity;
 
 class UMonster :
@@ -13,6 +20,8 @@ protected:
 
 	matrix mat;
 	frameData frame;
+
+	MONSTER_ANIME_STATE a_State;
 
 public:
 	virtual void Init() {}

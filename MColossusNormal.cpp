@@ -16,7 +16,7 @@
 void MColossusNormal::Init()
 {
 	ATLASMANAGER->SetAtlas("COLOSUSS", "./txt/Colosuss.txt", "./Texture/Colosuss.png");
-	colDeath = { 1, 1, 640, 360, 0, 0 };
+	colDeath = { 1, 1, 360, 360, 0, 0 };
 	colbody = COL_BODY_MAT;
 	colhead = COL_HEAD_MAT;
 	colLshoulder = COL_LSHOULDER_MAT;
@@ -29,25 +29,39 @@ void MColossusNormal::Init()
 	colFoot = COL_FOOT_MAT;
 
 	frame.wCount = 0;
+	a_State = MONSTER_ANIME_STATE::M_IDLE;
 }
 
 void MColossusNormal::Update(double deltaTime)
 {
+	switch (a_State)
+	{
+	case M_IDLE:
 
+		break;
+	case M_ATTACK:
+		break;
+	case M_HURT:
+		break;
+	default:
+		break;
+	}
 }
 
 void MColossusNormal::Render(double deltaTime)
 {
-	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSLEFTSHOULDER", colLshoulder);
-	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSLEFTHAND", colLHand);
-	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSHANDLE", colHandle);
-	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSHEAD", colhead);
-	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSBODY", colbody);
-	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSRIGHTSHOULDER", colRshoulder);
-	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSRIGHTARM", colRArm); 
-	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSFOOT", colFoot);
-	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSRIGHTLEG", colRleg);
-	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSSWORD", colSword);
+	switch (a_State)
+	{
+	case M_IDLE:
+		IdleAnime();
+		break;
+	case M_ATTACK:
+		break;
+	case M_HURT:
+		break;
+	default:
+		break;
+	}
 }
 
 void MColossusNormal::Release()
@@ -248,6 +262,17 @@ void MColossusNormal::IdleAnime()
 		frame.wCount = 0;
 	}
 	frame.wCount++;
+
+	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSLEFTSHOULDER", colLshoulder);
+	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSLEFTHAND", colLHand);
+	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSHANDLE", colHandle);
+	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSHEAD", colhead);
+	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSBODY", colbody);
+	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSRIGHTSHOULDER", colRshoulder);
+	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSRIGHTARM", colRArm);
+	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSFOOT", colFoot);
+	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSRIGHTLEG", colRleg);
+	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSSWORD", colSword);
 }
 
 MColossusNormal::MColossusNormal()

@@ -15,8 +15,17 @@ public:
 	void Update(double deltaTime);
 	void Render(double deltaTime);
 	void Release();
+	void IdleAnime();
 
 	CDjeeta() {}
+	CDjeeta(matrix _mat)
+	{
+		mat = _mat;
+	}
+	virtual UCharacter *clone()
+	{
+		return new CDjeeta(mat);
+	}
 	virtual ~CDjeeta() {}
 };
 
@@ -27,6 +36,7 @@ class AbEterBlast
 public:
 	void AbillitySet();
 	void AbillityAct();
+
 
 	AbEterBlast() {}
 	virtual ~AbEterBlast() {}

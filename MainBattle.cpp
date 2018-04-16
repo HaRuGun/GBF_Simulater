@@ -5,8 +5,12 @@
 void MainBattle::Init()
 {
 	phase = READY;
-	Boss = new MColossusNormal;
+	Boss = dynamic_cast<MColossusNormal*>(OBJECTMANAGER->AddObject(OBJECT_STATE::E_MONSTER, new MColossusNormal()));
 	Boss->Init();
+	character[0] = dynamic_cast<CDjeeta*>(OBJECTMANAGER->AddObject(OBJECT_STATE::M_CHARACTER, new CDjeeta(matrix(1000, 240))));
+
+	jeetaSpawner = new SpawnerFor<CDjeeta>();
+
 }
 
 void MainBattle::Update(double deltaTime)
@@ -25,7 +29,7 @@ void MainBattle::Update(double deltaTime)
 
 void MainBattle::Render(double deltaTime)
 {
-	Boss->Render(deltaTime);
+	
 }
 
 void MainBattle::Release()
@@ -38,7 +42,7 @@ void MainBattle::Release()
 
 void MainBattle::PhaseReady()
 {
-	Boss->IdleAnime();
+
 }
 
 void MainBattle::PhaseStart()

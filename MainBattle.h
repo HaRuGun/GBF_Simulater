@@ -17,6 +17,8 @@ class MainBattle
 protected:
 	BATTLE_PHASE phase;
 	UMonster *Boss;
+	UCharacter *character[4];
+	SpawnerFor<CDjeeta> *jeetaSpawner;
 
 public:
 	void Init();

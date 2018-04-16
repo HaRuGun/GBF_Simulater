@@ -19,6 +19,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
 
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "msimg32.lib")
@@ -55,6 +56,8 @@
 #include "Unit.h"
 #include "UMonster.h"
 #include "MColossusNormal.h"
+#include "Djeeta.h"
+#include "Spawner.h"
 
 #include "SMain.h"
 

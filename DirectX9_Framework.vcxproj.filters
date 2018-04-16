@@ -61,6 +61,9 @@
     <Filter Include="MainGame\Unit\Character">
       <UniqueIdentifier>{667e8197-40f2-4d6a-9d97-9c71f6990f1a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Unit\Spawner">
+      <UniqueIdentifier>{487ea91c-ac37-4f64-9f72-1fe91c1d4ae1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -132,6 +135,9 @@
     </ClInclude>
     <ClInclude Include="MColossusNormal.h">
       <Filter>MainGame\Unit\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>MainGame\Unit\Spawner</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

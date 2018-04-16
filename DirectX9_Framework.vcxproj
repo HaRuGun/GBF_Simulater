@@ -165,6 +165,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SMain.h" />
     <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="Spawner.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TextManager.h" />

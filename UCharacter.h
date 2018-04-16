@@ -3,6 +3,13 @@
 
 const int iTextureCount = 1;
 
+enum CHARACTER_ANIME_STATE
+{
+	C_IDLE,
+	C_ATTACK,
+	C_HURT
+};
+
 class Abillity;
 
 class UCharacter :
@@ -12,6 +19,8 @@ protected:
 	string sName;
 
 	Abillity* pAbillityArray[4];
+
+	CHARACTER_ANIME_STATE a_State;
 
 	string sTextureArray[iTextureCount];
 	matrix mat;
@@ -23,6 +32,8 @@ public:
 	virtual void Render(double deltaTime) {}
 	virtual void Release() {}
 
-	UCharacter() {}
+	void SetAnimeState(CHARACTER_ANIME_STATE _state) { a_State = _state; }
+
+	virtual UCharacter *clone() = 0;
 	virtual ~UCharacter() {}
 };

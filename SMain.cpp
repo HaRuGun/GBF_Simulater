@@ -21,14 +21,16 @@ void SMain::Init()
 void SMain::Update(double deltaTime)
 {
 	mainBattle->Update(deltaTime);
+	OBJECTMANAGER->Update(deltaTime);
 }
 
 void SMain::Render(double deltaTime)
 {
 	mainBattle->Render(deltaTime);
+	OBJECTMANAGER->Render(deltaTime);
 }
 
 void SMain::Release()
 {
-
+	OBJECTMANAGER->Release();
 }

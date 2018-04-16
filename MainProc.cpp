@@ -64,6 +64,7 @@ int MainProc::Release()
 	SceneManager::ReleaseSingleton();
 	TextManager::ReleaseSingleton();
 	SoundManager::ReleaseSingleton();
+	ObjectManager::ReleaseSingleton();
 
 	return 0;
 }
