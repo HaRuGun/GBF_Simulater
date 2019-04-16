@@ -1,6 +1,11 @@
 #pragma once
 
+struct AnimationKeyPoint
+{
+	float frame;
+	matrix pos;
 
+};
 class MColossusNormal : 
 	public UMonster
 {
@@ -23,7 +28,7 @@ public:
 	void Render(double deltaTime);
 	void Release();
 
-	void IdleAnime();
+	void IdleAnime(double deltaTime);
 
 	MColossusNormal();
 	virtual ~MColossusNormal();

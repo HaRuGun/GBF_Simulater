@@ -32,8 +32,8 @@ public:
 struct frameData
 {
 public:
-	int wCount, hCount;
-	int wIndex, hIndex;
+	float wCount, hCount;
+	float wIndex, hIndex;
 };
 
 

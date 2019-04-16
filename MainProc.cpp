@@ -38,6 +38,7 @@ int MainProc::Update(double deltaTime)
 	if (INPUTMANAGER->IsKeyDown(VK_ESCAPE))
 	{
 		PostMessage(hWnd, WM_QUIT, NULL, NULL);
+		Release();
 	}
 	return 0;
 }

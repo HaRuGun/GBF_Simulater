@@ -53,7 +53,7 @@ void MColossusNormal::Render(double deltaTime)
 	switch (a_State)
 	{
 	case M_IDLE:
-		IdleAnime();
+		IdleAnime(deltaTime);
 		break;
 	case M_ATTACK:
 		break;
@@ -69,15 +69,17 @@ void MColossusNormal::Release()
 
 }
 
-void MColossusNormal::IdleAnime()
+void MColossusNormal::IdleAnime(double deltaTime)
 {
-	if (frame.wCount >= 0 && frame.wCount <= 29)
+	colhead.x = COL_HEAD_MAT.x + Lerp(0.0f, 3.0f, min(frame.wCount / 30.0f, 1));
+
+	if (frame.wCount >= 0 && frame.wCount <= 29)//За·Д
 	{
 		//head
 		{
-			colhead.x += 0.1;
-			colhead.y += 0.1;
-			colhead.direction += 0.05;
+			//colhead.x += 0.1;
+			//colhead.y += 0.1;
+			//colhead.direction += 0.05;
 		}
 		//Body
 		{
@@ -261,7 +263,7 @@ void MColossusNormal::IdleAnime()
 		colFoot = COL_FOOT_MAT;
 		frame.wCount = 0;
 	}
-	frame.wCount++;
+	frame.wCount += deltaTime;
 
 	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSLEFTSHOULDER", colLshoulder);
 	IMAGEMANAGER->DrawAtlasImage("COLOSUSS", "COLOSUSSLEFTHAND", colLHand);
